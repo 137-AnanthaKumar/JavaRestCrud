@@ -1,5 +1,6 @@
 package com.example.roleBaseSecurity.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +13,7 @@ public class Controller{
     }
 
     @GetMapping("/user")
+	@PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public String user() {
         return ("<h1>Welcome User</h1>");
     }

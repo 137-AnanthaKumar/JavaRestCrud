@@ -10,7 +10,7 @@ public class DatePresentBetweenDays {
 	public static void main(String[] args) throws ParseException {
 	    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
 		Date dateBefore = sdf.parse("07/18/2022");
-	    Date dateAfter = sdf.parse("07/21/2022");
+	    Date dateAfter = sdf.parse("07/29/2022");
 		System.out.println(dateBefore);
 		 Date d = new Date();
 		 String currDt = sdf.format(d);

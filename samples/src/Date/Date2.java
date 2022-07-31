@@ -8,6 +8,7 @@ public class Date2 {
 
 	public static void main(String[] args) throws ParseException {
 		Date date = new Date();
+		System.out.println(date);
 		System.out.println("JAVA DATE FORMAT ::"+date);
 		SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
 		String stringDate= DateFor.format(date);

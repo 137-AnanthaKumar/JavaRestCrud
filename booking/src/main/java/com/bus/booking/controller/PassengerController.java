@@ -1,5 +1,7 @@
 package com.bus.booking.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bus.booking.exception.AlreadyHaveBus;
 import com.bus.booking.model.Ticket;
+import com.bus.booking.model.User;
+import com.bus.booking.repository.UserRepository;
 import com.bus.booking.service.TicketService;
 
 
@@ -22,6 +26,8 @@ public class PassengerController {
 	@Autowired
 	private TicketService ticketService;
 	
+	@Autowired
+	private UserRepository repoUser;
 	@GetMapping("/viewticket/{pnr}")
 	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
    public ResponseEntity<Ticket> viewTicket(@PathVariable int pnr){
@@ -71,6 +77,17 @@ public class PassengerController {
 			
 			
 		}
+		
+		
+	}
+	
+	
+	@GetMapping("getuser/{id}")
+	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public User getUser(@PathVariable Long id) {
+		
+		Optional<User> onj=repoUser.findById(id);
+		return onj.get();
 		
 		
 	}

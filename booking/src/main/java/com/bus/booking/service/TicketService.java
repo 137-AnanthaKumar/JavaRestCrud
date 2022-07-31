@@ -36,6 +36,7 @@ public class TicketService {
 	public Ticket bookNewTicket(Ticket ticket) {
 		Ticket savingTicket=new Ticket();
 		User uss=userrepo.findByUserName("akila");
+		//savingTicket.setUser(uss);
 		System.out.println("Here "+uss.getEmail());
 		Bus busFromDb=busRepo.findByBusNo(ticket.getBusNo());
 		
@@ -105,7 +106,8 @@ public class TicketService {
 				 busRepo.save(busFromDb);
 				Ticket tickets=ticketRepo.save(storingTicket);
 				
-				uss.addTicket(tickets);
+				uss.addTicket(ticket);
+				uss.getTicketList().add(savingTicket);
 				userrepo.save(uss);
 				return	tickets;
 
